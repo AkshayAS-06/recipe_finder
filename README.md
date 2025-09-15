@@ -32,25 +32,12 @@ An open-source AI-powered application that suggests recipes based on a user’s 
 
 ---
 
-##  Team Roles & Responsibilities
-
-| Role                   | Responsibilities                                                   |
-| ---------------------- | ------------------------------------------------------------------ |
-| Frontend Engineer      | UI for text input, displaying results, macros/calories, explainability. |
-| Backend/API Engineer   | APIs for user input, LLM orchestration, serverless deployment logic.   |
-| AI/ML Engineer         | Multi-modal model hooks (text first), nutrition and macro calculators.  |
-| Agent/Orchestration    | Implement AI agent workflows, recipe logic, traceable explanation.     |
-| DevOps/Data Engineer   | Local/cloud setup for LLMs, lightweight caching, simple ops/scripts.   |
-
----
-
 ##  Tech Stack
 
 - **Frontend:** React.js (TypeScript)
 - **Backend:** FastAPI (Python), LangChain, LangGraph
 - **AI/ML:** Open-source LLMs (GPT-4o, LLaMA, transformers), open recipes datasets
 - **Cache/Storage:** File-based or lightweight DB (SQLite)
-- **DevOps:** Docker, basic local scripts
 
 ---
 
