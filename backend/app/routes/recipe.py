@@ -1,10 +1,13 @@
 from fastapi import APIRouter
-from typing import List
-
+from pydantic import BaseModel
+from backend.app.agents.gemini_agent import generate_recipe_from_ingredients
 
 router = APIRouter()
 
-@router.post("/search")
-async def search_recipes(ingredients: List[str]):
-    # Replace with real logic later
-    return {"recipes": ["Test Recipe 1", "Test Recipe 2"], "ingredients": ingredients}
+class IngredientInput(BaseModel):
+    ingredients: list[str]
+
+@router.post("/generate-recipe")
+def generate_recipe(input: IngredientInput):
+    recipe = generate_recipe_from_ingredients(input.ingredients)
+    return {"recipe": recipe}

@@ -8,3 +8,11 @@ node_modules/
 
 # System
 .DS_Store
+
+# Environment variables
+.env
+
+# pytest
+.pytest_cache/
+tests/
+*.pytest_cache

@@ -1,8 +1,7 @@
 from fastapi import FastAPI
-from backend.app.routes import recipe
-app = FastAPI()
+from backend.app.routes.recipe import router as recipe_router
+from backend.app.routes.nutrition import router as nutrition_router
 
-@app.get("/health")
-async def health_check():
-    return {"status": "ok"}
-app.include_router(recipe.router, prefix="/recipes", tags=["recipes"])
+app = FastAPI()
+app.include_router(recipe_router)
+app.include_router(nutrition_router)
