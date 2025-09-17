@@ -1,6 +1,6 @@
 from langgraph.graph import StateGraph, END
 from backend.app.agents.gemini_agent import generate_recipe_from_ingredients
-from backend.app.utils.nutrition import calculate_macros
+from backend.app.utils.nutrition_usda import calculate_nutrition_usda
 
 def generate_recipe_node(state):
     print(">>> Ingredients passed to Gemini:", state.get("ingredients"))
@@ -12,17 +12,8 @@ def generate_recipe_node(state):
 
 def calculate_macros_node(state):
     recipe = state.get("recipe", {})
-    ingredients = {}
-
-    for ing in recipe.get("ingredients", []):
-        name = ing.get("item", "").lower()
-        try:
-            qty = float(ing.get("quantity", 1))
-        except (ValueError, TypeError):
-            qty = 1
-        ingredients[name] = qty
-
-    macros = calculate_macros(ingredients)
+    ingredients = recipe.get("ingredients", [])
+    macros = calculate_nutrition_usda(ingredients)
 
     # Explicitly return both recipe and macros so recipe is not lost
     return {"recipe": recipe, "macros": macros}
