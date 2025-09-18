@@ -333,45 +333,63 @@ const RecipeFinder = () => {
                   disabled={loading}
                 />
                 <div className="input-decoration"></div>
-              </div>
-            </div>
-
-            {/* AUDIO RECORDING/UPLOAD */}
-            <div style={{ marginTop: '10px', marginBottom: '10px' }}>
-              <div>
-                <strong>Or record your ingredients:</strong><br />
-                <button type="button" onClick={startRecording} disabled={recording}>
-                  {recording ? 'Recording...' : '🎤 Start Recording'}
-                </button>
-                <button type="button" onClick={stopRecording} disabled={!recording}>
-                  Stop Recording
-                </button>
-              </div>
-              {audioBlob && (
-                <div>
-                  <audio controls src={URL.createObjectURL(audioBlob)} />
-                  <button type="button" onClick={handleAudioUpload}>Use Speech Ingredients</button>
-                </div>
-              )}
-            </div>
-
-            {/* IMAGE UPLOAD & EXTRACT */}
-            <div style={{ marginBottom: '10px' }}>
-              <div>
-                <strong>Or upload a food image:</strong><br />
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  disabled={loading}
-                  style={{ marginTop: '5px' }}
-                />
-                {imageFile && (
-                  <div>
-                    <span>{imageFile.name}</span>
-                    <button type="button" onClick={handleImageUpload}>Use Image Ingredients</button>
+                
+                {/* Upload and Speech Icons */}
+                <div className="input-icons">
+                  {/* File Upload Icon */}
+                  <div className="icon-container">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      disabled={loading}
+                      id="image-upload"
+                      className="hidden-file-input"
+                    />
+                    <label htmlFor="image-upload" className="icon-button upload-icon" title="Upload food image">
+                      +
+                    </label>
+                    {imageFile && (
+                      <div className="file-preview">
+                        <span className="file-name">{imageFile.name}</span>
+                        <button 
+                          type="button" 
+                          onClick={handleImageUpload}
+                          className="use-file-btn"
+                          disabled={loading}
+                        >
+                          Use
+                        </button>
+                      </div>
+                    )}
                   </div>
-                )}
+
+                  {/* Speech Recording Icon */}
+                  <div className="icon-container">
+                    <button
+                      type="button"
+                      onClick={recording ? stopRecording : startRecording}
+                      disabled={loading}
+                      className={`icon-button speech-icon ${recording ? 'recording' : ''}`}
+                      title={recording ? 'Stop recording' : 'Record ingredients'}
+                    >
+                      {recording ? '⏹' : '🎤︎︎'}
+                    </button>
+                    {audioBlob && (
+                      <div className="audio-preview">
+                        <audio controls src={URL.createObjectURL(audioBlob)} className="audio-player" />
+                        <button 
+                          type="button" 
+                          onClick={handleAudioUpload}
+                          className="use-file-btn"
+                          disabled={loading}
+                        >
+                          Use
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
 
