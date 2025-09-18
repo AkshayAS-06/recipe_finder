@@ -6,3 +6,9 @@ langchain-google-genai
 python-dotenv
 langgraph
 usda_fdc
+pydub
+python-multipart  
+PyAudio 
+SpeechRecognition
+google-generativeai
+pillow
