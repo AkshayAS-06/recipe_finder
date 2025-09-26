@@ -3,6 +3,15 @@
 An open-source, agentic AI application that suggests recipes based on a user’s available ingredients. It provides detailed nutritional information and can be extended for multi-modal inputs like voice and image.
 
 ---
+## Team Members
+
+* Aditya DP (22n203)
+* Ajay P (22n205)
+* Akshay AS (22n206)
+* Dhanush AS (22n214)
+* Mehul Dinesh (22n232)
+
+---
 
 ## Core Features
 
